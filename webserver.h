@@ -5,10 +5,14 @@
 
 class WebServer {
     public:
-        WebServer();
+        WebServer(char server_name);
+        char getServerName();
+        bool isRequestProcessed(int current_time);
+        void processRequest(Request request, int current_time);
     private:
         Request request;
-        int process_time;
+        int request_process_start_time;
+        char server_name;
 };
 
 #endif

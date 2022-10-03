@@ -2,19 +2,23 @@
 #define LOADBALANCER_H
 
 #include "request.h"
+#include "webserver.h"
 
 #include <queue>
+#include <vector>
 
 class LoadBalancer {
     public:
-        LoadBalancer();
+        LoadBalancer(std::vector<WebServer> webservers);
         int getTime();
-        void pushNewRequest(Request request);
-        Request popNextRequest();
         bool isQueueEmpty();
+        void incrementTime();
+        Request popNextRequest();
+        void pushNewRequest(Request request);
     private:
         std::queue<Request> requestqueue;
         int time;
+        std::vector<WebServer> webservers;
 };
 
 #endif

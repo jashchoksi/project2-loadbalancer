@@ -1,10 +1,12 @@
 #include "loadbalancer.h"
 
-LoadBalancer::LoadBalancer(): time(0) {}
+LoadBalancer::LoadBalancer(std::vector<WebServer> webservers): time(0), webservers(webservers) {}
 
 int LoadBalancer::getTime() { return this->time; }
 
-void LoadBalancer::pushNewRequest(Request request) { this->requestqueue.push(request); }
+bool LoadBalancer::isQueueEmpty() { return this->requestqueue.empty(); }
+
+void LoadBalancer::incrementTime() { this->time += 1; }
 
 Request LoadBalancer::popNextRequest() {
     Request next_request = this->requestqueue.front();
@@ -13,4 +15,4 @@ Request LoadBalancer::popNextRequest() {
     return next_request;
 }
 
-bool LoadBalancer::isQueueEmpty() { return this->requestqueue.empty(); }
+void LoadBalancer::pushNewRequest(Request request) { this->requestqueue.push(request); }
