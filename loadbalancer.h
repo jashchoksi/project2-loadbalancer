@@ -5,7 +5,6 @@
 #include "webserver.h"
 
 #include <queue>
-#include <vector>
 
 class LoadBalancer {
     public:

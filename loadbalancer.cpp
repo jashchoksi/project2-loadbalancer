@@ -15,4 +15,6 @@ Request* LoadBalancer::popNextRequest() {
     return next_request;
 }
 
-void LoadBalancer::pushNewRequest(Request* request) { this->requestqueue.push(request); }
+void LoadBalancer::pushNewRequest(Request* request) {
+    this->requestqueue.push(request);
+}

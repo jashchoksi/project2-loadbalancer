@@ -5,19 +5,12 @@
 #include <string>
 
 struct Request {
+    std::string ip_in = std::to_string(rand() % 256) + "." + std::to_string(rand() % 256) + "." +
+                        std::to_string(rand() % 256) + "." + std::to_string(rand() % 256);
 
-    Request(int run_time) {
-        ip_in = std::to_string(rand() % 256) + "." + std::to_string(rand() % 256) + "." +
-                std::to_string(rand() % 256) + "." + std::to_string(rand() % 256);
+    std::string ip_out = std::to_string(rand() % 256) + "." + std::to_string(rand() % 256) + "." +
+                         std::to_string(rand() % 256) + "." + std::to_string(rand() % 256);
 
-        ip_out = std::to_string(rand() % 256) + "." + std::to_string(rand() % 256) + "." +
-                 std::to_string(rand() % 256) + "." + std::to_string(rand() % 256);
-
-        process_time = rand() % run_time;
-    }
-
-    std::string ip_in;
-    std::string ip_out;
     int process_time;
 };
 

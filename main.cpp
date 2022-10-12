@@ -3,8 +3,17 @@
 
 #include <iostream>
 #include <time.h>
+#include <vector>
 
 const int A_ASCII_VALUE = 65;
+const int PROCESS_TIME_MODIFIER = 500;
+
+Request* generateRandomRequest() {
+    Request* generated_request = new Request();
+    generated_request->process_time = rand() % PROCESS_TIME_MODIFIER;
+
+    return generated_request;
+}
 
 int main() {
     srand(time(0));
@@ -22,10 +31,8 @@ int main() {
     LoadBalancer* load_balancer = new LoadBalancer();
 
     requests_to_generate = num_servers * 2;
-
     for (int i = 0; i < requests_to_generate; i++) {
-        Request* generated_request = new Request(run_time);
-        load_balancer->pushNewRequest(generated_request);
+        load_balancer->pushNewRequest(generateRandomRequest());
     }
 
     std::vector<WebServer*> webservers(num_servers, NULL);
@@ -36,27 +43,25 @@ int main() {
     }
 
     while (!load_balancer->isQueueEmpty() && load_balancer->getTime() < run_time) {
-        int current_time = load_balancer->getTime();
-
         for (int i = 0; i < webservers.size(); i++) {
             int current_time = load_balancer->getTime();
             WebServer* webserver = webservers[i];
 
             if (!webserver->hasRequest()) {
                 webserver->processRequest(load_balancer->popNextRequest(), current_time);
-                break;
             } else if (webserver->requestDoneProcessing(current_time)) {
                 Request* processed_request = webserver->getRequest();
                 std::cout << webserver->getServerName() << " finished processing request from " + processed_request->ip_in + " to " +
                              processed_request->ip_out + " at time " << current_time << std::endl;
 
                 webserver->processRequest(load_balancer->popNextRequest(), current_time);
-                break;
             }
+            load_balancer->incrementTime();
         }
 
-        // generate new requests at random time
-
+        if (rand() % 10 == 0) {
+            load_balancer->pushNewRequest(generateRandomRequest());
+        }
 
         load_balancer->incrementTime();
     }
