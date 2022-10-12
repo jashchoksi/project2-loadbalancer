@@ -13,10 +13,10 @@ class LoadBalancer {
         int getTime();
         bool isQueueEmpty();
         void incrementTime();
-        Request popNextRequest();
-        void pushNewRequest(Request request);
+        Request* popNextRequest();
+        void pushNewRequest(Request* request);
     private:
-        std::queue<Request> requestqueue;
+        std::queue<Request*> requestqueue;
         int time;
 };
 
