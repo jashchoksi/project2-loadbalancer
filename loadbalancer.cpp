@@ -1,6 +1,6 @@
 #include "loadbalancer.h"
 
-LoadBalancer::LoadBalancer(std::vector<WebServer> webservers): time(0), webservers(webservers) {}
+LoadBalancer::LoadBalancer(): time(0) {}
 
 int LoadBalancer::getTime() { return this->time; }
 

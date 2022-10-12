@@ -9,7 +9,7 @@
 
 class LoadBalancer {
     public:
-        LoadBalancer(std::vector<WebServer> webservers);
+        LoadBalancer();
         int getTime();
         bool isQueueEmpty();
         void incrementTime();
@@ -18,7 +18,6 @@ class LoadBalancer {
     private:
         std::queue<Request> requestqueue;
         int time;
-        std::vector<WebServer> webservers;
 };
 
 #endif
