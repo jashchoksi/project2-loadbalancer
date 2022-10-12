@@ -8,7 +8,6 @@ class WebServer {
         WebServer(char server_name);
         char getServerName();
         Request* getRequest();
-        bool hasRequest();
         bool requestDoneProcessing(int current_time);
         void processRequest(Request* request, int current_time);
     private:

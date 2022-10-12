@@ -9,6 +9,7 @@
 class LoadBalancer {
     public:
         LoadBalancer();
+        int getQueueSize();
         int getTime();
         bool isQueueEmpty();
         void incrementTime();
