@@ -19,25 +19,21 @@ int main() {
     std::cout << "Enter time to run the load balancer: ";
     std::cin >> run_time;
 
-    std::vector<WebServer> webservers(num_servers, NULL);
-    for (int i = 0; i < num_servers; i++) {
-        char server_name = char(A_ASCII_VALUE + i);
-        WebServer* webserver = new WebServer(server_name);
-        webservers.at(i) = *webserver;
-    }
-
-    LoadBalancer* load_balancer = new LoadBalancer(webservers);
+    LoadBalancer* load_balancer = new LoadBalancer(); // create loadbalancer
 
     requests_to_generate = num_servers * 2;
 
+    // generate random requests and add them to loadbalancer request queue
     for (int i = 0; i < requests_to_generate; i++) {
         Request* generated_request = new Request();
         load_balancer->pushNewRequest(*generated_request);
     }
 
-    while (!load_balancer->isQueueEmpty()) {
-        load_balancer->incrementTime();
-        Request popped_request = load_balancer->popNextRequest();
+    std::vector<WebServer> webservers(num_servers, NULL); // create vector that will hold webservers
+    for (int i = 0; i < num_servers; i++) {
+        char server_name = char(A_ASCII_VALUE + i);
+        WebServer* webserver = new WebServer(server_name);
+        webservers.at(i) = *webserver;
     }
 
     return 0;
