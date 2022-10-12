@@ -37,7 +37,8 @@ int main() {
 
     requests_to_generate = num_servers * 2;
     for (int i = 0; i < requests_to_generate; i++) {
-        load_balancer->pushNewRequest(generateRandomRequest());
+        Request* generated_request = generateRandomRequest();
+        load_balancer->pushNewRequest(generated_request);
     }
 
     ofs << "Starting queue size: " << load_balancer->getQueueSize() << std::endl << std::endl;
@@ -50,6 +51,8 @@ int main() {
         webservers[i] = webserver;
     }
 
+    int min_task_time = webservers[0]->getRequest()->process_time;
+    int max_task_time = webservers[0]->getRequest()->process_time;
     while (load_balancer->getTime() < run_time) {
         for (int i = 0; i < webservers.size(); i++) {
             int current_time = load_balancer->getTime();
@@ -57,6 +60,12 @@ int main() {
 
             if (webserver->getRequest() != nullptr && webserver->requestDoneProcessing(current_time)) {
                 Request* processed_request = webserver->getRequest();
+
+                if (processed_request->process_time < min_task_time) {
+                    min_task_time = processed_request->process_time;
+                } else if (processed_request->process_time > max_task_time) {
+                    max_task_time = processed_request->process_time;
+                }
 
                 ofs << webserver->getServerName() << " finished processing request from " + processed_request->ip_in + " to " +
                     processed_request->ip_out + " at time " << current_time << std::endl;
@@ -78,6 +87,7 @@ int main() {
     }
 
     ofs << std::endl << "Ending queue size: " << load_balancer->getQueueSize() << std::endl;
+    ofs << "Range of task times: [" << min_task_time << ", " << max_task_time << "]" << std::endl;
 
     return 0;
 }
