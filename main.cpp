@@ -5,6 +5,7 @@
 #include <iostream>
 #include <time.h>
 #include <vector>
+#include <unistd.h>
 
 const int A_ASCII_VALUE = 65;
 const int PROCESS_TIME_LIMIT = 500;
@@ -19,7 +20,15 @@ Request* generateRandomRequest() {
 int main() {
     srand(time(0));
 
-    std::ofstream ofs("log.txt", std::ios::out | std::ios::trunc);
+    // determine name of log file
+    int file_num = 1;
+    std::string file_name = "log_" + std::to_string(file_num) + ".txt";
+    while (access(file_name.c_str(), R_OK) == 0) { // increment log file number until it is not used in any existing log file names
+        file_num++;
+        file_name = "log_" + std::to_string(file_num) + ".txt";
+    }
+
+    std::ofstream ofs(file_name, std::ios::out | std::ios::trunc);
 
     int num_servers = 0;
     int run_time = 0;
@@ -43,7 +52,7 @@ int main() {
 
     ofs << "Starting queue size: " << load_balancer->getQueueSize() << std::endl << std::endl;
 
-    std::vector<WebServer*> webservers(num_servers, nullptr);
+    std::vector<WebServer*> webservers(num_servers, nullptr); // vector that holds webservers
     for (int i = 0; i < num_servers; i++) {
         char server_name = char(A_ASCII_VALUE + i);
         WebServer* webserver = new WebServer(server_name);
@@ -56,7 +65,8 @@ int main() {
     while (load_balancer->getTime() < run_time) {
         for (int i = 0; i < webservers.size(); i++) {
             int current_time = load_balancer->getTime();
-            WebServer* webserver = webservers[i]; // can also not use for loop and just index vector using webservers[current_time % webservers.size()]
+            WebServer* webserver = webservers[i]; // can also just index vector using webservers[current_time % webservers.size()]
+                                                  // instead of for loop
 
             if (webserver->getRequest() != nullptr && webserver->requestDoneProcessing(current_time)) {
                 Request* processed_request = webserver->getRequest();
@@ -74,11 +84,13 @@ int main() {
                             processed_request->ip_out + " at time " << current_time << std::endl;
 
                 webserver->processRequest(load_balancer->popNextRequest(), current_time);
-            } else if (webserver->getRequest() == nullptr) {
+                load_balancer->incrementTime();
+            } else if (webserver->getRequest() == nullptr) { // webserver does not have/is waiting on a request
                 webserver->processRequest(load_balancer->popNextRequest(), current_time);
+                load_balancer->incrementTime();
             }
 
-            if (rand() % 15 == 0) {
+            if (rand() % 15 == 0) { // randomly generate requests
                 load_balancer->pushNewRequest(generateRandomRequest());
             }
 
