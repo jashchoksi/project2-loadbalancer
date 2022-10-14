@@ -1,0 +1,159 @@
+\hypertarget{class_web_server}{}\doxysection{Web\+Server Class Reference}
+\label{class_web_server}\index{WebServer@{WebServer}}
+
+
+Implementation of a webserver that will process requests.  
+
+
+
+
+{\ttfamily \#include $<$webserver.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_web_server_a0c602d8627e483c164ec3e9af8d47d0e}{Web\+Server}} (char \mbox{\hyperlink{class_web_server_aa9bbf6efecb7d95e2df55b03b056ae09}{server\+\_\+name}})
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_web_server}{Web\+Server}} constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_request}{Request}} $\ast$ \mbox{\hyperlink{class_web_server_aed64ff2b10d6048149df938221ac0247}{get\+Request}} ()
+\begin{DoxyCompactList}\small\item\em Gets the request the webserver is processing. \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{class_web_server_a312a0b0190438fa283ab8f695e3ae7dc}{get\+Server\+Name}} ()
+\begin{DoxyCompactList}\small\item\em Gets the name of the webserver. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_web_server_aa8a0117e58b6284637fb30348483f524}{process\+Request}} (\mbox{\hyperlink{struct_request}{Request}} $\ast$\mbox{\hyperlink{class_web_server_a076fd03d00964d108f20b061576ea30d}{request}}, int current\+\_\+time)
+\begin{DoxyCompactList}\small\item\em Webserver takes in request and starts processing it. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_web_server_a278b831d92c684f1b66cc33bba36616d}{request\+Done\+Processing}} (int current\+\_\+time)
+\begin{DoxyCompactList}\small\item\em Checks if the request is done processing. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_request}{Request}} $\ast$ \mbox{\hyperlink{class_web_server_a076fd03d00964d108f20b061576ea30d}{request}}
+\begin{DoxyCompactList}\small\item\em The request the webserver is processing. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_web_server_aef35a951e4a04f1722ffb040d4b5a96b}{request\+\_\+process\+\_\+start\+\_\+time}}
+\begin{DoxyCompactList}\small\item\em The time/clock cycle at which the webserver started processing the request. \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{class_web_server_aa9bbf6efecb7d95e2df55b03b056ae09}{server\+\_\+name}}
+\begin{DoxyCompactList}\small\item\em The character that corresponds to the name of the webserver. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation of a webserver that will process requests. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_web_server_a0c602d8627e483c164ec3e9af8d47d0e}\label{class_web_server_a0c602d8627e483c164ec3e9af8d47d0e}} 
+\index{WebServer@{WebServer}!WebServer@{WebServer}}
+\index{WebServer@{WebServer}!WebServer@{WebServer}}
+\doxysubsubsection{\texorpdfstring{WebServer()}{WebServer()}}
+{\footnotesize\ttfamily Web\+Server\+::\+Web\+Server (\begin{DoxyParamCaption}\item[{char}]{server\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_web_server}{Web\+Server}} constructor. 
+
+Creates a \mbox{\hyperlink{class_web_server}{Web\+Server}} object with its name as {\itshape server\+\_\+name}, and an initial {\itshape request\+\_\+process\+\_\+start\+\_\+time} value of 0.
+
+
+\begin{DoxyParams}{Parameters}
+{\em server\+\_\+name} & character to be used as the name of the server \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_web_server_aed64ff2b10d6048149df938221ac0247}\label{class_web_server_aed64ff2b10d6048149df938221ac0247}} 
+\index{WebServer@{WebServer}!getRequest@{getRequest}}
+\index{getRequest@{getRequest}!WebServer@{WebServer}}
+\doxysubsubsection{\texorpdfstring{getRequest()}{getRequest()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_request}{Request}} $\ast$ Web\+Server\+::get\+Request (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the request the webserver is processing. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the request the webserver is processing 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_web_server_a312a0b0190438fa283ab8f695e3ae7dc}\label{class_web_server_a312a0b0190438fa283ab8f695e3ae7dc}} 
+\index{WebServer@{WebServer}!getServerName@{getServerName}}
+\index{getServerName@{getServerName}!WebServer@{WebServer}}
+\doxysubsubsection{\texorpdfstring{getServerName()}{getServerName()}}
+{\footnotesize\ttfamily char Web\+Server\+::get\+Server\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the name of the webserver. 
+
+\begin{DoxyReturn}{Returns}
+A character denoting the name of the webserver 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_web_server_aa8a0117e58b6284637fb30348483f524}\label{class_web_server_aa8a0117e58b6284637fb30348483f524}} 
+\index{WebServer@{WebServer}!processRequest@{processRequest}}
+\index{processRequest@{processRequest}!WebServer@{WebServer}}
+\doxysubsubsection{\texorpdfstring{processRequest()}{processRequest()}}
+{\footnotesize\ttfamily void Web\+Server\+::process\+Request (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_request}{Request}} $\ast$}]{request,  }\item[{int}]{current\+\_\+time }\end{DoxyParamCaption})}
+
+
+
+Webserver takes in request and starts processing it. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em request} & the request to be processed by the webserver \\
+\hline
+{\em current\+\_\+time} & the current time/clock cycle which will serve as the starting processing time for the request \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_web_server_a278b831d92c684f1b66cc33bba36616d}\label{class_web_server_a278b831d92c684f1b66cc33bba36616d}} 
+\index{WebServer@{WebServer}!requestDoneProcessing@{requestDoneProcessing}}
+\index{requestDoneProcessing@{requestDoneProcessing}!WebServer@{WebServer}}
+\doxysubsubsection{\texorpdfstring{requestDoneProcessing()}{requestDoneProcessing()}}
+{\footnotesize\ttfamily bool Web\+Server\+::request\+Done\+Processing (\begin{DoxyParamCaption}\item[{int}]{current\+\_\+time }\end{DoxyParamCaption})}
+
+
+
+Checks if the request is done processing. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em current\+\_\+time} & the current time/clock cycle which will be used to determine whether or not the webserver has finished processing the request\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if request is done processing, otherwise False 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_web_server_a076fd03d00964d108f20b061576ea30d}\label{class_web_server_a076fd03d00964d108f20b061576ea30d}} 
+\index{WebServer@{WebServer}!request@{request}}
+\index{request@{request}!WebServer@{WebServer}}
+\doxysubsubsection{\texorpdfstring{request}{request}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_request}{Request}}$\ast$ Web\+Server\+::request\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The request the webserver is processing. 
+
+\mbox{\Hypertarget{class_web_server_aef35a951e4a04f1722ffb040d4b5a96b}\label{class_web_server_aef35a951e4a04f1722ffb040d4b5a96b}} 
+\index{WebServer@{WebServer}!request\_process\_start\_time@{request\_process\_start\_time}}
+\index{request\_process\_start\_time@{request\_process\_start\_time}!WebServer@{WebServer}}
+\doxysubsubsection{\texorpdfstring{request\_process\_start\_time}{request\_process\_start\_time}}
+{\footnotesize\ttfamily int Web\+Server\+::request\+\_\+process\+\_\+start\+\_\+time\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The time/clock cycle at which the webserver started processing the request. 
+
+\mbox{\Hypertarget{class_web_server_aa9bbf6efecb7d95e2df55b03b056ae09}\label{class_web_server_aa9bbf6efecb7d95e2df55b03b056ae09}} 
+\index{WebServer@{WebServer}!server\_name@{server\_name}}
+\index{server\_name@{server\_name}!WebServer@{WebServer}}
+\doxysubsubsection{\texorpdfstring{server\_name}{server\_name}}
+{\footnotesize\ttfamily char Web\+Server\+::server\+\_\+name\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The character that corresponds to the name of the webserver. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{webserver_8h}{webserver.\+h}}\item 
+\mbox{\hyperlink{webserver_8cpp}{webserver.\+cpp}}\end{DoxyCompactItemize}

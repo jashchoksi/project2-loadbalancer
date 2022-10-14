@@ -1,0 +1,28 @@
+\hypertarget{loadbalancer_8h_source}{}\doxysection{loadbalancer.\+h}
+\mbox{\hyperlink{loadbalancer_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef LOADBALANCER\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define LOADBALANCER\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{request_8h}{request.h}}"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{webserver_8h}{webserver.h}}"{}}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <queue>}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{12 \textcolor{keyword}{class }\mbox{\hyperlink{class_load_balancer}{LoadBalancer}} \{}
+\DoxyCodeLine{13     \textcolor{keyword}{public}:}
+\DoxyCodeLine{14         \mbox{\hyperlink{class_load_balancer_a6e6669a6a4f0c3df345a13246b17a84b}{LoadBalancer}}();}
+\DoxyCodeLine{15         \textcolor{keywordtype}{int} \mbox{\hyperlink{class_load_balancer_ac104e708c3d8a6984122d9a0df13b80b}{getQueueSize}}();}
+\DoxyCodeLine{16         \textcolor{keywordtype}{int} \mbox{\hyperlink{class_load_balancer_a53a98f96b3ed2f4940d16b24e16f3d48}{getTime}}();}
+\DoxyCodeLine{17         \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_load_balancer_a27b39e3bd5ac47e6845ec63c73cbe436}{isQueueEmpty}}();}
+\DoxyCodeLine{18         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_load_balancer_ae24f5d16503fd1c6160ea2fefcf3fe2c}{incrementTime}}();}
+\DoxyCodeLine{19         \mbox{\hyperlink{struct_request}{Request}}* \mbox{\hyperlink{class_load_balancer_ab702cbdd9ad44accf6568a88870f5b58}{popNextRequest}}();}
+\DoxyCodeLine{20         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_load_balancer_ae7c7f6ac70e7ab4445dcd92dd95e9bac}{pushNewRequest}}(\mbox{\hyperlink{struct_request}{Request}}* request);}
+\DoxyCodeLine{21     \textcolor{keyword}{private}:}
+\DoxyCodeLine{25         std::queue<Request*> \mbox{\hyperlink{class_load_balancer_af2ed8882080ab796b441691545c7d071}{requestqueue}};}
+\DoxyCodeLine{29         \textcolor{keywordtype}{int} \mbox{\hyperlink{class_load_balancer_a363317f241373a9b71b03df5b4927265}{time}};}
+\DoxyCodeLine{30 \};}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

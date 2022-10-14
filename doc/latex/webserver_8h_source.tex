@@ -1,0 +1,24 @@
+\hypertarget{webserver_8h_source}{}\doxysection{webserver.\+h}
+\mbox{\hyperlink{webserver_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef WEBSERVER\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define WEBSERVER\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{request_8h}{request.h}}"{}}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{9 \textcolor{keyword}{class }\mbox{\hyperlink{class_web_server}{WebServer}} \{}
+\DoxyCodeLine{10     \textcolor{keyword}{public}:}
+\DoxyCodeLine{11         \mbox{\hyperlink{class_web_server}{WebServer}}(\textcolor{keywordtype}{char} \mbox{\hyperlink{class_web_server_aa9bbf6efecb7d95e2df55b03b056ae09}{server\_name}});}
+\DoxyCodeLine{12         \mbox{\hyperlink{struct_request}{Request}}* \mbox{\hyperlink{class_web_server_aed64ff2b10d6048149df938221ac0247}{getRequest}}();}
+\DoxyCodeLine{13         \textcolor{keywordtype}{char} \mbox{\hyperlink{class_web_server_a312a0b0190438fa283ab8f695e3ae7dc}{getServerName}}();}
+\DoxyCodeLine{14         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_web_server_aa8a0117e58b6284637fb30348483f524}{processRequest}}(\mbox{\hyperlink{struct_request}{Request}}* \mbox{\hyperlink{class_web_server_a076fd03d00964d108f20b061576ea30d}{request}}, \textcolor{keywordtype}{int} current\_time);}
+\DoxyCodeLine{15         \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_web_server_a278b831d92c684f1b66cc33bba36616d}{requestDoneProcessing}}(\textcolor{keywordtype}{int} current\_time);}
+\DoxyCodeLine{16     \textcolor{keyword}{private}:}
+\DoxyCodeLine{20         \mbox{\hyperlink{struct_request}{Request}}* \mbox{\hyperlink{class_web_server_a076fd03d00964d108f20b061576ea30d}{request}};}
+\DoxyCodeLine{24         \textcolor{keywordtype}{int} \mbox{\hyperlink{class_web_server_aef35a951e4a04f1722ffb040d4b5a96b}{request\_process\_start\_time}};}
+\DoxyCodeLine{28         \textcolor{keywordtype}{char} \mbox{\hyperlink{class_web_server_aa9bbf6efecb7d95e2df55b03b056ae09}{server\_name}};}
+\DoxyCodeLine{29 \};}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

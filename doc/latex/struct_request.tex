@@ -1,0 +1,75 @@
+\hypertarget{struct_request}{}\doxysection{Request Struct Reference}
+\label{struct_request}\index{Request@{Request}}
+
+
+Provides the implementation for the requests handled by the load balancer.  
+
+
+
+
+{\ttfamily \#include $<$request.\+h$>$}
+
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{struct_request_a9331de2ccac6bca9a37616d103db6568}{ip\+\_\+in}}
+\begin{DoxyCompactList}\small\item\em The source IP address of the request. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{struct_request_a789e85de4e06e293c519fa6ed14539f3}{ip\+\_\+out}}
+\begin{DoxyCompactList}\small\item\em The destination IP address of the request. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{struct_request_a83bae66aeda0a1c64559d5a90f475367}{process\+\_\+time}}
+\begin{DoxyCompactList}\small\item\em The time it takes to process the request. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Provides the implementation for the requests handled by the load balancer. 
+
+A request consists of a source IP address, a destination IP address, and the time it takes to process it. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{struct_request_a9331de2ccac6bca9a37616d103db6568}\label{struct_request_a9331de2ccac6bca9a37616d103db6568}} 
+\index{Request@{Request}!ip\_in@{ip\_in}}
+\index{ip\_in@{ip\_in}!Request@{Request}}
+\doxysubsubsection{\texorpdfstring{ip\_in}{ip\_in}}
+{\footnotesize\ttfamily std\+::string Request\+::ip\+\_\+in}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= std::to\_string(rand() \% 256) + \textcolor{stringliteral}{"{}."{}} + std::to\_string(rand() \% 256) + \textcolor{stringliteral}{"{}."{}} +}
+\DoxyCodeLine{                        std::to\_string(rand() \% 256) + \textcolor{stringliteral}{"{}."{}} + std::to\_string(rand() \% 256)}
+
+\end{DoxyCode}
+
+
+The source IP address of the request. 
+
+The octets of the IP address are intialized with random values. \mbox{\Hypertarget{struct_request_a789e85de4e06e293c519fa6ed14539f3}\label{struct_request_a789e85de4e06e293c519fa6ed14539f3}} 
+\index{Request@{Request}!ip\_out@{ip\_out}}
+\index{ip\_out@{ip\_out}!Request@{Request}}
+\doxysubsubsection{\texorpdfstring{ip\_out}{ip\_out}}
+{\footnotesize\ttfamily std\+::string Request\+::ip\+\_\+out}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= std::to\_string(rand() \% 256) + \textcolor{stringliteral}{"{}."{}} + std::to\_string(rand() \% 256) + \textcolor{stringliteral}{"{}."{}} +}
+\DoxyCodeLine{                         std::to\_string(rand() \% 256) + \textcolor{stringliteral}{"{}."{}} + std::to\_string(rand() \% 256)}
+
+\end{DoxyCode}
+
+
+The destination IP address of the request. 
+
+The octets of the IP address are intialized with random values. \mbox{\Hypertarget{struct_request_a83bae66aeda0a1c64559d5a90f475367}\label{struct_request_a83bae66aeda0a1c64559d5a90f475367}} 
+\index{Request@{Request}!process\_time@{process\_time}}
+\index{process\_time@{process\_time}!Request@{Request}}
+\doxysubsubsection{\texorpdfstring{process\_time}{process\_time}}
+{\footnotesize\ttfamily int Request\+::process\+\_\+time}
+
+
+
+The time it takes to process the request. 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{request_8h}{request.\+h}}\end{DoxyCompactItemize}

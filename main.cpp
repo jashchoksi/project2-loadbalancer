@@ -8,11 +8,12 @@
 #include <unistd.h>
 
 const int A_ASCII_VALUE = 65;
-const int PROCESS_TIME_LIMIT = 500;
+const int PROCESS_TIME_MODIFIER = 500;
+const int RANDOM_REQUEST_GENERATION_MODIFIER = 15;
 
 Request* generateRandomRequest() {
     Request* generated_request = new Request();
-    generated_request->process_time = rand() % PROCESS_TIME_LIMIT;
+    generated_request->process_time = rand() % PROCESS_TIME_MODIFIER;
 
     return generated_request;
 }
@@ -44,8 +45,8 @@ int main() {
 
     LoadBalancer* load_balancer = new LoadBalancer();
 
-    requests_to_generate = num_servers * 2;
-    for (int i = 0; i < requests_to_generate; i++) {
+    const int STARTING_QUEUE_SIZE = num_servers * 2;
+    for (int i = 0; i < STARTING_QUEUE_SIZE; i++) {
         Request* generated_request = generateRandomRequest();
         load_balancer->pushNewRequest(generated_request);
     }
@@ -90,7 +91,7 @@ int main() {
                 load_balancer->incrementTime();
             }
 
-            if (rand() % 15 == 0) { // randomly generate requests
+            if (rand() % RANDOM_REQUEST_GENERATION_MODIFIER == 0) { // randomly generate requests
                 load_balancer->pushNewRequest(generateRandomRequest());
             }
 

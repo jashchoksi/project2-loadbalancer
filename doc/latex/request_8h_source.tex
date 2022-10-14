@@ -1,0 +1,22 @@
+\hypertarget{request_8h_source}{}\doxysection{request.\+h}
+\mbox{\hyperlink{request_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef REQUEST\_H}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define REQUEST\_H}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <cstdlib>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{12 \textcolor{keyword}{struct }\mbox{\hyperlink{struct_request}{Request}} \{}
+\DoxyCodeLine{18     std::string \mbox{\hyperlink{struct_request_a9331de2ccac6bca9a37616d103db6568}{ip\_in}} = std::to\_string(rand() \% 256) + \textcolor{stringliteral}{"{}."{}} + std::to\_string(rand() \% 256) + \textcolor{stringliteral}{"{}."{}} +}
+\DoxyCodeLine{19                         std::to\_string(rand() \% 256) + \textcolor{stringliteral}{"{}."{}} + std::to\_string(rand() \% 256);}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{26     std::string \mbox{\hyperlink{struct_request_a789e85de4e06e293c519fa6ed14539f3}{ip\_out}} = std::to\_string(rand() \% 256) + \textcolor{stringliteral}{"{}."{}} + std::to\_string(rand() \% 256) + \textcolor{stringliteral}{"{}."{}} +}
+\DoxyCodeLine{27                          std::to\_string(rand() \% 256) + \textcolor{stringliteral}{"{}."{}} + std::to\_string(rand() \% 256);}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{32     \textcolor{keywordtype}{int} \mbox{\hyperlink{struct_request_a83bae66aeda0a1c64559d5a90f475367}{process\_time}};}
+\DoxyCodeLine{33 \};}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
